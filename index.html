@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="styles.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+
+                var cardNumber = 0;
+                var cardArray = [];
+
+                $("form").on("submit", function(){
+                    var name = $("#first-name").val() + " " + $("#last-name").val();
+                    var description = $("#description").val();
+
+                    var htmlNameString = "<h2>" + name + "</h2>";
+                    var htmlDescriptionString = "<p>" + description + "</p>";
+                    
+                    var cardInfo = {
+                        "cardNumber": cardNumber,
+                        "name": name,
+                        "description": description,
+                        "htmlNameString": htmlNameString,
+                        "htmlDescriptionString": htmlDescriptionString
+                    }
+                    cardArray[cardNumber] = cardInfo;
+                    
+                    $("#target").append("<div id='" + cardNumber + "'>" + htmlNameString) + "</div>";
+
+                    cardNumber++;
+                    
+                    return false;
+                });
+
+                $("#target").on("click", "div", function(){
+                    var idNumber = "";
+                    idNumber += $(this).attr("id");
+
+                    if($(this).html() === cardArray[idNumber].htmlNameString){
+                        $(this).html(cardArray[idNumber].htmlDescriptionString);
+                    }
+                    else{
+                        $(this).html(cardArray[idNumber].htmlNameString);
+                    }
+                });
+
+            });
+        </script>
+        <title>Document</title>
+    </head>
+    <body>
+        <form>
+            <h4>First Name: </h4>
+            <input id="first-name" type="text" value="John"></input><br>
+            <h4>Last Name: </h4>
+            <input id="last-name" type="text" value="Doe"></input><br>
+            <h4>Description: </h4>
+            <textarea id="description" rows="5" cols="45">Write a description</textarea><br>
+            <input type="submit"></input>
+        </form>
+        <div id="target"></div>
+    </body>
+</html>

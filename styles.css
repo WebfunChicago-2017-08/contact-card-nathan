@@ -1,0 +1,26 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    max-width: 80%;
+    margin: 0px auto;
+}
+form{
+    border: 8px solid darkred;
+    display: inline-block;
+    padding: 16px;
+}
+div{
+    display: inline-block;
+    vertical-align: top;
+    padding: 8px;
+    max-width: 515px;
+}
+div div{
+    display: inline-block;
+    padding: 16px;
+    margin-bottom: 8px;
+    border: 4px groove aquamarine;
+    margin: 8px;
+    width: 200px;
+}
